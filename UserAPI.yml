@@ -15,9 +15,9 @@ spring:
     name: UserApi
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/databasenotas
-    username: usr
-    password: pwd
+    url: jdbc:mysql://localhost:3333/dbUsers
+    username: root
+    password: db-bt-22
   jpa:
     generate-ddl: true
     hibernate:
