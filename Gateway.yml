@@ -1,0 +1,49 @@
+server:
+  port: ${PORT:${SERVER_PORT:8080}}
+
+spring:
+  application:
+    name: Gateway
+  cloud:    
+    gateway:      
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: userRoute
+          uri: lb://UserAPI
+          predicates:
+            - Path=/users/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+  main:
+    allow-bean-definition-overriding: true
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+   client:
+      registerWithEureka: false
+      fetchRegistry: true
+      serviceURL:
+         defaultZone: http://localhost:8761/eureka
+management:
+   endpoint:
+      gateway:
+         enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: gateway
