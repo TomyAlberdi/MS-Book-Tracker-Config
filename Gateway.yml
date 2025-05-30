@@ -40,6 +40,8 @@ eureka:
       serviceURL:
          defaultZone: http://localhost:8761/eureka
 management:
+  server:
+    base-path: /actuator
   endpoints:
     web:
       exposure:
