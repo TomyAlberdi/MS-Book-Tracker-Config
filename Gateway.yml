@@ -14,10 +14,13 @@ spring:
           uri: lb://UserAPI
           predicates:
             - Path=/users/**
-        - id: bookRoute
+        - id: bookListsRoute
           uri: lb://BookAPI
           predicates:
             - Path=/book-lists/**
+        - id: diaryRoute
+          uri: lb://BookAPI
+          predicates:
             - Path=/diary/**
       globalcors:
         cors-configurations:
