@@ -15,7 +15,7 @@ spring:
     name: UserApi
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3333/dbUsers
+    url: jdbc:mysql://db:3306/dbUsers
     username: root
     password: db-bt-22
   jpa:
@@ -34,13 +34,14 @@ spring:
 ## Eureka Client
 eureka:
   instance:
-    hostname: localhost
+    hostname: user-api
+    prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/
 
 management:
   ## Actuator
