@@ -1,6 +1,6 @@
 server:
   port: ${PORT:8761}
-  
+
 message: Spring Cloud Config EurekaServer
 
 spring:
@@ -9,9 +9,9 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: eureka-server 
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://eureka-server:8761/eureka/ 
