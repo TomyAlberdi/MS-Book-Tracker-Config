@@ -1,6 +1,6 @@
 server:
-  port: ${PORT:8082}
-  
+  port: ${PORT:8082} 
+
 ## Microservice info
 info:
   app:
@@ -9,14 +9,14 @@ info:
     description: BookAPI description
   author: tomyalberdi
 
-## Spring 
+## Spring
 spring:
   application:
     name: BookApi
   data:
     mongodb:
-      host: localhost
-      port: 3334
+      host: mongodb            
+      port: 27017                 
       database: dbBooks
       username: mongoadmin
       password: mongo-secret
@@ -25,13 +25,15 @@ spring:
 ## Eureka Client
 eureka:
   instance:
-    hostname: localhost
+    hostname: book-api           
+    prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka/ 
 
 management:
   info:
